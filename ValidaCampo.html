@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/JavaScript"> 
+        function ValidaCampo(form) {
+            //Recupere o id do elemento nome dentro do form
+            var nome =  document.getElementById("nome").value;
+            if (nome == "") {
+                alert("Digite algum texto no campo!");
+                form.nome.focus();
+                return false;
+            }
+            //Recupere o id do elemento idade dentro do form
+            var idade = document.getElementById("idade").value;
+            if (idade == "" || !validaNumero(idade)) {
+                alert("Digite apenas números!");
+                form.idade.focus();
+                return false;
+            }
+            //Verifica se foi selecionado ou não
+            if (form.sexo[0]).checked==false &&
+            form.sexo[1].checked==false) {
+                alert("Selecione o sexo!");
+                return false;
+            }
+        }
+        //Função que valida se o campo é um número
+        function validaNumero(numero) 
+        {
+            var ValidaChars = "0123456789";
+            var IsNumero = true;
+            var Char;
+
+            for (i = 0; i < numero.length && 
+            IsNumero == true; i++)
+            {
+                Char = numero.charAt(i);
+                if (ValidaChars.indexOf(Char)== -1) 
+                {
+                    IsNumero = false;
+                }
+            }
+           return IsNumero;
+        }
+    </script>
+</head>
+<body>
+    <form nome="formCad" onsubmit="ValidaCampo(formCad)">
+        Digite o nome:
+        <input id="nome" type="text" size="12"/>
+        </br>
+        Digite a idade:
+        <input id="idade" type="text" size="5"/>
+        <br/>
+        Sexo: <input type="radio" name="sexo" value="0">
+        Masculino
+            <input type="radio" name="sexo" value="1">
+        Feminino
+        <br/><br/>
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>
